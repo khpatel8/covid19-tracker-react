@@ -68,18 +68,16 @@ function Main() {
         <Card data={totalData} />
         {dailyData && <Chart data={dailyData} />}
       </div>
-      <div>
-        <Map
-          center={
-            stateCode === "US"
-              ? { lat: 39.89781, lng: -102.079405 }
-              : getCord(stateCode)
-          }
-          zoom={5}
-          data={stateCode === "US" ? totalData : stateDataAll}
-          state={stateCode}
-        ></Map>
-      </div>
+      <Map
+        center={
+          stateCode === "US"
+            ? { lat: 39.89781, lng: -102.079405 }
+            : getCord(stateCode)
+        }
+        zoom={5}
+        data={stateCode === "US" ? totalData : stateDataAll}
+        state={stateCode}
+      ></Map>
     </div>
   );
 }

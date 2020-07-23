@@ -89,6 +89,8 @@ footer {
 @media (max-width: 500px) and (min-width: 300px) {
   .visual-div {
     margin: 0;
+    margin-bottom: 1rem;
+    display: block;
   }
 
   .card-container {
@@ -104,7 +106,7 @@ footer {
     width: 100%;
   }
 
-  .visual-div {
-    display: block;
+  .map {
+    margin: 0;
   }
 }
