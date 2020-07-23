@@ -1,0 +1,110 @@
+body {
+  background-color: #f4f4f4;
+  font-family: "Archia", sans-serif;
+  font-weight: bold;
+}
+
+.chart-container {
+  padding-left: 10%;
+  width: 70%;
+  margin: auto;
+}
+
+nav {
+  padding-right: 5%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+nav div {
+  padding: 0.4rem;
+}
+
+.card-container {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 5px;
+  width: 25%;
+}
+
+.card {
+  grid-column: 1 / span 2;
+  height: 7rem;
+}
+
+.visual-div {
+  display: flex;
+  margin: 0 10rem;
+  margin-bottom: 4rem;
+}
+
+.map {
+  height: 700px;
+  background-color: ivory;
+  border-radius: 20px;
+  margin: 0 10rem;
+}
+
+.map .leaflet-container {
+  height: 100%;
+}
+
+.select-div {
+  display: flex;
+  justify-content: center;
+  margin: 3% 5%;
+}
+
+.nav-div h3,
+h5 {
+  margin: 0;
+}
+
+h2,
+p {
+  text-align: center;
+}
+
+.red {
+  color: #f5054d;
+}
+
+.blue {
+  color: #5012c4;
+}
+
+.green {
+  color: rgb(7, 139, 7);
+}
+
+footer {
+  display: grid;
+  place-items: center;
+  bottom: 0;
+  height: 4rem;
+}
+
+@media (max-width: 500px) and (min-width: 300px) {
+  .visual-div {
+    margin: 0;
+  }
+
+  .card-container {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .chart-container {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .visual-div {
+    display: block;
+  }
+}
