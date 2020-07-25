@@ -9,6 +9,7 @@ export default function Map({ center, zoom, data, state }) {
       <LeafletMap
         center={center}
         zoom={zoom}
+        scrollWheelZoom={false}
         maxBounds={[
           [5.49955, -167.276413],
           [83.162102, -52.23304],

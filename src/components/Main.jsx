@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import fetchTotalData, { fetchUSDailyData, fetchDailyData } from "../api";
-import Dropdown from "./Dropdown";
-import Card from "./Card";
-import Chart from "./Chart";
-import Map from "./Map";
+
 import "leaflet/dist/leaflet.css";
 import { getCord, getStateDataAll } from "./util";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+const Dropdown = React.lazy(() => import("./Dropdown"));
+const Card = React.lazy(() => import("./Card"));
+const Chart = React.lazy(() => import("./Chart"));
+const Map = React.lazy(() => import("./Map"));
 
 function Main() {
   const [dailyData, setDailyData] = useState(null);
@@ -62,23 +65,25 @@ function Main() {
   }
 
   return (
-    <div>
-      <Dropdown stateCode={stateCode} onChange={handleChange} />
-      <div className="visual-div">
-        <Card data={totalData} />
-        {dailyData && <Chart data={dailyData} />}
+    <Suspense fallback={<CircularProgress />}>
+      <div>
+        <Dropdown stateCode={stateCode} onChange={handleChange} />
+        <div className="visual-div">
+          <Card data={totalData} />
+          {dailyData && <Chart data={dailyData} />}
+        </div>
+        <Map
+          center={
+            stateCode === "US"
+              ? { lat: 39.89781, lng: -102.079405 }
+              : getCord(stateCode)
+          }
+          zoom={5}
+          data={stateCode === "US" ? totalData : stateDataAll}
+          state={stateCode}
+        ></Map>
       </div>
-      <Map
-        center={
-          stateCode === "US"
-            ? { lat: 39.89781, lng: -102.079405 }
-            : getCord(stateCode)
-        }
-        zoom={5}
-        data={stateCode === "US" ? totalData : stateDataAll}
-        state={stateCode}
-      ></Map>
-    </div>
+    </Suspense>
   );
 }
 
